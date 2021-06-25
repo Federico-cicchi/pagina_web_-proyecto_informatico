@@ -1,0 +1,504 @@
+<?php
+                                          //CONFIGURACION DEL SERVIDOR.
+$mail = new PHPMailer; //configuracion del servidor.
+$mail->isSMTP(); //configuracion del servidor.
+$mail->Host='smpt.gmail.com'; //host del servidor.
+$mail->Port=587; //indicar puerto.
+$mail->SMTPAuth=true; //habilitar autenticacion para smtp.
+$mail->SMTPSecure='tls'; //protocolo de seguridad.
+$mail->Username='fede12345cicchi@gmail.com'; //cuenta que se encarga de la conexion del uso y envio del protocolo.
+$mail->Password='xbarcelona123x'; //contraseña del usuario.
+
+                                          //CONFIGURAR DESTINATARIO.
+$mail->setFrom($_POST['email'],$_POST['nombre']); //indicar desde donde se envia.
+$mail->addAddress('fede12345cicchi@gmail.com'); //a donde llega el proceso.
+$mail->addReplyto($_POST['email'],$_POST['nombre']); //a donde llega la respuesta (formulario).
+                                       
+                                          //CONFIGURAR MENSAJE.
+$mail->isHTML(true); //indicar que el mensaje es de estructura HTML.
+$mail->Subject='Enviado por '.$_POST['nombre']; //por quien es enviado el mensaje.
+$mail->Body='<h1 align=center>Nombre: '$_POST['nombre'].'<br>Email: '.$_POST['email'].'<br>'.'</h1>'; //cuerpo del mensaje.
+?>
+<!-------------------------------------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+<!--------------------validar los numeros en el apartado de cuantas personas viven con usted------------------------>
+    <script>
+        addEventListener('load',inicio,false);
+      
+        function inicio()
+        {
+          document.getElementById('civiles').addEventListener('change',aumenta_civiles,false);
+        }
+      
+        function aumenta_civiles()
+        {    
+          document.getElementById('civil').innerHTML=document.getElementById('civiles').value;
+        }
+      </script>  
+<!------------------------------------------------------------------------------------------------------------------>
+</head>
+ <body class="bodydy">
+<header>
+  <nav class="header">
+    <img class="img" src="logo-kennedy.png" alt="">
+     <h1 
+        class="h1">Inscripcion a la beca: "Beca Oportunidad"
+     </h1>
+     <h2 class="h2">
+        Dicha beca contiene cupos limitados de inscripciones.
+     </h2>
+  </nav>
+</header>
+<hr>
+<div class="div">
+<center>
+<h9 class="h7">
+  "IMPORTANTE, LEER ATENTAMENTE"
+</h9>
+</center>
+<p class="p2">
+  para poder solicitar la beca, se deben tener presentes los siguientes requisitos:
+  <br>
+  <br>
+  - Conexion estable a servicios de internet.
+  <br>
+  - Posesión de dispositivos electronicos como por ejemplo: celular, notebook, computadora de esritorio, etc, para poder establecer las clases virtuales.
+  <br>
+  - Disponibilidad de horarios nocturnos.
+</p>
+</div>
+<hr>
+<!-------------------------------etiqueta formulario con su respectivo contenido------------------------------------>
+  
+    <form action="" method="post"> 
+      <h3>
+        <fieldset>
+          <legend>Datos Personales</legend>
+       <p> Nombre completo:
+         <br>
+          <input type="text" name="nombre" size="50" required></p>
+       <p>Sexo:
+         <br>
+        <input type="radio" name="hm" value="h"> Hombre
+        <br>
+        <input type="radio" name="mm" value="m"> Mujer
+       </p>
+
+       <p>Fecha de nacimiento: 
+        <br> 
+        <input type="date" name="nacido" min="1990"></p>
+       <p>Localidad: 
+        <br> 
+        <input type="text" name="localidad" size="50"></p>
+       <p>Domicilo real: 
+        <br> 
+        <input type="text" name="DR" size="50"></p>
+       <p>Domicilio legal: 
+        <br> 
+        <input type="text" name="DL" size="50"></p>
+       <p>DNI (ingrese foto frontal y dorsal): 
+        <br> 
+        <input type="file" name="imagen" required></p>
+       <p>Telefono: 
+        <br> 
+        <input type="tel" name="telefono"></p>
+       <p>Email: 
+        <br> 
+        <input type="text" name="email" size="50"></p>
+
+       <p>Posee trabajo:
+         <br>
+        <input type="radio" name="si" value="si"> Si
+        <br>
+        <input type="radio" name="no" value="no"> No
+       </p>
+
+       <p>De poseer trabajo, indicar de que tipo:
+         <br>
+        <input type="radio" name="eb" value="b"> En blanco 
+        <br>
+        <input type="radio" name="en" value="n"> En negro
+       </p>
+       cuantas personas viven con usted:
+       <br>
+       <input type="range" name="familia" id="civiles" min="0" max="10">
+       <span id="civil">0</span>
+       <br>
+      </fieldset>
+       <p>Por que solicita la beca: 
+        <br> 
+        <input type="text" name="beca" size="50" required></p>
+       </h3>
+    </form>
+    <p>
+      <a href="formulario-enviado.html"><buttom type="submit">Enviar</buttom></a>
+    </p>
+    <hr>
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-xs-12">
+            <a href="https://www.kennedy.edu.ar">
+              <img class="logo img-fluid" src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/images/logo-negative-v01.svg">
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 text-lg-left text-md-center text-sm-center text-center">
+            <h3>Institucional</h3>
+            <div class="menu-menu-footer-institucional-container"><ul id="menu-menu-footer-institucional" class="menu"><li id="menu-item-604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-604"><a href="https://www.kennedy.edu.ar/institucional/somoslakennedy/">#SomoslaKennedy</a></li>
+    <li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605"><a href="https://www.kennedy.edu.ar/institucional/nuestra-historia/">Nuestra historia</a></li>
+    <li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608"><a href="https://www.kennedy.edu.ar/institucional/educacion-virtual/">Educación Virtual</a></li>
+    <li id="menu-item-5049" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5049"><a href="https://www.kennedy.edu.ar/educacion-basica-media-e-inicial/">Educación Básica, Media e Inicial</a></li>
+    <li id="menu-item-2559" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2559"><a href="https://www.kennedy.edu.ar/revistas-kennedy/">Revistas Kennedy</a></li>
+    </ul></div>			</div>
+          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 text-lg-left text-md-center text-sm-center text-center">
+            <h3>Alumnos</h3>
+            <div class="menu-menu-footer-alumnos-container"><ul id="menu-menu-footer-alumnos" class="menu"><li id="menu-item-817" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-817"><a href="https://www.kennedy.edu.ar/ingresantes/inscripcion-grado/">Ingresantes</a></li>
+    <li id="menu-item-609" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-609"><a href="https://miportal.kennedy.edu.ar/">Mi portal Kennedy</a></li>
+    <li id="menu-item-6800" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6800"><a href="https://www.kennedy.edu.ar/calendario-academico-2021/">Calendario académico 2021</a></li>
+    <li id="menu-item-611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611"><a href="https://www.kennedy.edu.ar/alumnos/biblioteca/">Biblioteca</a></li>
+    <li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><a href="https://www.kennedy.edu.ar/alumnos/relaciones-institucionales/">Subsecretaría de Relaciones Institucionales</a></li>
+    <li id="menu-item-819" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-819"><a href="https://www.kennedy.edu.ar/alumnos/placement-tests/">Pruebas de nivel de inglés (Placement Tests)</a></li>
+    <li id="menu-item-818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-818"><a href="https://www.kennedy.edu.ar/ingresantes/2-carrera-alumno-vocacional/">Graduados</a></li>
+    <li id="menu-item-751" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-751"><a href="https://www.kennedy.edu.ar/eventos">Eventos</a></li>
+    <li id="menu-item-752" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-752"><a href="https://www.kennedy.edu.ar/noticias">Noticias y Novedades</a></li>
+    </ul></div>			</div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 text-lg-left text-md-center text-sm-center text-center">
+            <h3>Contacto</h3>
+            <h2><a href="tel:+5408002223340">Ingresantes <i class="fas fa-phone"></i> 0800-222-3340</a></h2>
+            <h2><a href="tel:+5408002225366">Alumnos <i class="fas fa-phone"></i> 0800-222-5366</a></h2>
+            <div class="menu-menu-contacto-footer-container"><ul id="menu-menu-contacto-footer" class="menu"><li id="menu-item-3583" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3583"><a href="mailto:alumnos@kennedy.edu.ar">alumnos@kennedy.edu.ar</a></li>
+    <li id="menu-item-1113" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1113"><a href="https://www.kennedy.edu.ar/sedes">Sedes y Puntos Kennedy</a></li>
+    <li id="menu-item-820" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-820"><a href="https://www.kennedy.edu.ar/alumnos/preguntas-frecuentes/">Preguntas frecuentes</a></li>
+    <li id="menu-item-2249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2249"><a href="https://www.kennedy.edu.ar/politica-de-privacidad/">Política de privacidad</a></li>
+    <li id="menu-item-2248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2248"><a href="https://www.kennedy.edu.ar/terminos-y-condiciones/">Términos y condiciones</a></li>
+    </ul></div>			</div>
+          <div class="col-lg-4 offset-lg-1 col-md-6 col-sm-6 col-xs-12 text-lg-left text-md-center text-sm-center text-center">
+            <h3>Solicitá información</h3>
+            <div role="form" class="wpcf7" id="wpcf7-f5-o3" lang="es-AR" dir="ltr">
+    <div class="screen-reader-response"></div>
+    <form action="/#wpcf7-f5-o3" method="post" class="wpcf7-form" novalidate="novalidate">
+    <div style="display: none;">
+    <input type="hidden" name="_wpcf7" value="5" />
+    <input type="hidden" name="_wpcf7_version" value="5.1.1" />
+    <input type="hidden" name="_wpcf7_locale" value="es_AR" />
+    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f5-o3" />
+    <input type="hidden" name="_wpcf7_container_post" value="0" />
+    <input type="hidden" name="_wpcf7cf_hidden_group_fields" value="" />
+    <input type="hidden" name="_wpcf7cf_hidden_groups" value="" />
+    <input type="hidden" name="_wpcf7cf_visible_groups" value="" />
+    <input type="hidden" name="_wpcf7cf_repeaters" value="[]" />
+    <input type="hidden" name="_wpcf7cf_steps" value="{}" />
+    <input type="hidden" name="_wpcf7cf_options" value="{&quot;form_id&quot;:5,&quot;conditions&quot;:[],&quot;settings&quot;:{&quot;animation&quot;:&quot;yes&quot;,&quot;animation_intime&quot;:200,&quot;animation_outtime&quot;:200,&quot;notice_dismissed&quot;:true,&quot;wpcf7cf_settings_saved&quot;:1}}" />
+    <input type="hidden" name="g-recaptcha-response" value="" />
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-12">
+            <span class="wpcf7-form-control-wrap nombre"><input type="text" name="nombre" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Nombre" /></span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-12">
+            <span class="wpcf7-form-control-wrap apellido"><input type="text" name="apellido" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Apellido" /></span>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-12">
+            <span class="wpcf7-form-control-wrap email"><input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email" /></span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-12">
+            <span class="wpcf7-form-control-wrap telefono"><input type="tel" name="telefono" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel" aria-required="true" aria-invalid="false" placeholder="Teléfono celular (formato: 1150005205)" /></span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-12">
+            <span class="wpcf7-form-control-wrap provincia"><select name="provincia" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" aria-required="true" aria-invalid="false"><option value="">Provincia</option><option value="Buenos Aires">Buenos Aires</option><option value="Capital Federal">Capital Federal</option><option value="Catamarca">Catamarca</option><option value="Chaco">Chaco</option><option value="Chubut">Chubut</option><option value="Córdoba">Córdoba</option><option value="Corrientes">Corrientes</option><option value="Entre Ríos">Entre Ríos</option><option value="Formosa">Formosa</option><option value="Jujuy">Jujuy</option><option value="La Pampa">La Pampa</option><option value="La Rioja">La Rioja</option><option value="Mendoza">Mendoza</option><option value="Misiones">Misiones</option><option value="Neuquén">Neuquén</option><option value="Río Negro">Río Negro</option><option value="Salta">Salta</option><option value="San Juan">San Juan</option><option value="San Luis">San Luis</option><option value="Santa Cruz">Santa Cruz</option><option value="Santa Fe">Santa Fe</option><option value="Santiago del Estero">Santiago del Estero</option><option value="Tierra del Fuego">Tierra del Fuego</option><option value="Tucumán">Tucumán</option></select></span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 col-12">
+    
+    <span class="wpcf7-form-control-wrap modalidad"><select name="modalidad" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" aria-required="true" aria-invalid="false"><option value="">Modalidad</option><option value="Presencial">Presencial</option><option value="Virtual">Virtual</option><option value="Semipresencial">Semipresencial</option></select></span>
+            
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-12">
+            <span class="wpcf7-form-control-wrap carrera"><select name="carrera" class="wpcf7-form-control wpcf7-select wpcf7-validates-as-required" aria-required="true" aria-invalid="false"><option value="">Carrera</option></select></span>
+    
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-xs-12 col-12">
+         
+            <input type="hidden" name="programa" value="Home Kennedy" class="wpcf7-form-control wpcf7-hidden" />
+            <input type="hidden" name="url" value="https://www.kennedy.edu.ar/" class="wpcf7-form-control wpcf7-hidden" />
+            <input type="submit" value="Solicitar Información" class="wpcf7-form-control wpcf7-submit" />
+        </div>
+    </div><div class="wpcf7-response-output wpcf7-display-none"></div></form></div>			</div>
+        </div>
+      </div>
+    <div class="bar-copyright p-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <p class="text-lg-left text-sm-center text-center">© Copyright 2021 | Universidad Kennedy | Todos los derechos reservados</p>	
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <p class="text-lg-right text-md-center text-sm-center text-center">
+            Seguinos:
+            <a class="social-icon transition-280" target="_blank" href="https://www.facebook.com/UniversidadKennedy" class="m-1"><i class="fab fa-facebook"></i></a>
+            <a class="social-icon transition-280" target="_blank" href="https://twitter.com/KennedyNoticias" class="m-1"><i class="fab fa-twitter"></i></a>
+            <a class="social-icon transition-280" target="_blank" href="https://www.youtube.com/user/UniversidadKennedy" class="m-1"><i class="fab fa-youtube"></i></a>
+            <a class="social-icon transition-280" target="_blank" href="https://www.linkedin.com/school/universidadkennedy/" class="m-1"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-icon transition-280" target="_blank" href="https://www.instagram.com/somoslakennedy/" class="m-1"><i class="fab fa-instagram"></i></a>
+            </p>		
+          </div>
+        </div>
+      </div>
+    </div>
+    </footer>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      var wpcf7 = {"apiSettings":{"root":"https:\/\/www.kennedy.edu.ar\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+      /* ]]> */
+      </script>
+      <script type='text/javascript' src='https://www.kennedy.edu.ar/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.1'></script>
+      <script type='text/javascript' src='https://www.kennedy.edu.ar/wp-content/plugins/easy-utm-tracking-with-contact-form-7/js/ucf7_scripts.js?ver=version'></script>
+      <script type='text/javascript'>
+      /* <![CDATA[ */
+      var wpcf7cf_global_settings = {"ajaxurl":"https:\/\/www.kennedy.edu.ar\/wp-admin\/admin-ajax.php"};
+      /* ]]> */
+      </script>
+      <script type='text/javascript' src='https://www.kennedy.edu.ar/wp-content/plugins/cf7-conditional-fields/js/scripts.js?ver=1.7.6'></script>
+      <script type='text/javascript' src='https://www.kennedy.edu.ar/wp-includes/js/wp-embed.min.js?ver=5.0.3'></script>
+      <script type="text/javascript">
+      const HomeUrl = 'https://www.kennedy.edu.ar';
+      const ThemeUrl = 'https://www.kennedy.edu.ar/wp-content/themes/kennedy';
+      </script>
+      
+      <script type="text/javascript" src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/js/jquery-3.3.1.min.js"></script>
+      <script type="text/javascript" src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/js/popper.min.js"></script>
+      <script type="text/javascript" src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/js/bootstrap.min.js"></script>
+      <script defer src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/fonts/fontawesome/js/all.js"></script>
+      <script src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/js/swiper.min.js"></script>
+      <script src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/js/countUp.min.js"></script>
+      <script src="https://www.kennedy.edu.ar/wp-content/themes/kennedy/assets/js/kennedy.js"></script>
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4ed8e1992f2d1448"></script>
+      
+      
+      <script>
+      $(document).ready(function(){//ACCION CUANDO CARGUE LA PAGINA
+          var altura_arr = [];//CREAMOS UN ARREGLO VACIO
+          $('.igualar-altura').each(function(){//RECORREMOS TODOS LOS CONTENEDORES DE LAS IMAGENES, DEBEN TENER LA MISMA CLASE
+          var altura = $(this).height(); //LES SACAMOS LA ALTURA
+          altura_arr.push(altura);//METEMOS LA ALTURA AL ARREGLO
+        });
+          altura_arr.sort(function(a, b){return b-a}); //ACOMODAMOS EL ARREGLO EN ORDEN DESCENDENTE
+          $('.igualar-altura').each(function(){//RECORREMOS DE NUEVO LOS CONTENEDORES
+          $(this).css('height',altura_arr[0]);//LES PONEMOS A TODOS LOS CONTENEDORES EL PRIMERO ELEMENTO DE ALTURA DEL ARREGLO, QUE ES EL MAS GRANDE.
+        });
+        
+        // DROPDOWN MENU CON EFECTO Y HOVER
+        
+          if (window.matchMedia('(max-width: 992px)').matches) {
+          } else {
+          $('nav li.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(280);
+          }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(280);
+          });
+        }
+        
+        
+      
+        // Estilos a imagenes del editor wysiwyg
+        $('.contenido-wysiwyg img').addClass('img-fluid');
+      
+        
+      });
+      </script>
+      
+      <script>
+        /*BEGIN SCRIPT MOSTRA OCULTAR BUSQUEDA*/
+        function mostrar() {
+          div = document.getElementById('flotante');
+          div.style.visibility = 'visible';
+          div.style.opacity = '1';
+        }
+        function cerrar() {
+          div = document.getElementById('flotante');
+          div.style.visibility = 'hidden';
+          div.style.opacity = '0';
+        }
+        const blogURl = "https://www.kennedy.edu.ar";
+      </script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+          ListaCarrerasOption();
+        ListModalidad();
+          /** Back to top ***/
+          $('.ir-arriba').click(function(){
+              $('body, html').animate({
+                  scrollTop: '0px'
+              }, 1000);
+          });
+      
+          $(window).scroll(function(){
+              if( $(this).scrollTop() > 0 ){
+                  $('.ir-arriba').slideDown(200);
+              } else {
+                  $('.ir-arriba').slideUp(200);
+              }
+          });
+      
+          /*hacia abajo*/
+          $('.ir-abajo').click(function(){
+              $('body, html').animate({
+                  scrollTop: '1000px'
+              }, 1000);
+          });
+      
+      });
+      </script>
+      
+      <script type="text/javascript">
+      document.addEventListener( 'wpcf7mailsent', function( event ) {
+      
+        if ( '4204' == event.detail.contactFormId ) {
+      
+      }else {
+      
+      
+        location = 'https://www.kennedy.edu.ar/gracias';
+      }
+      }, false );
+      </script>
+      <script>
+      
+      
+      
+      </script>
+      
+      
+      <script type="text/javascript">
+        $(document).ready(function () {
+          
+          $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.search);
+            return (results !== null) ? results[1] || 0 : false;
+          }
+      
+          $('#dni').val($.urlParam('dni'));
+          $('#legajo').val($.urlParam('legajo'));
+          $('#nombre').val($.urlParam('nombre').replace(/%20/g, " "));
+              $('#apellido').val($.urlParam('apellido').replace(/%20/g, " "));
+            $('#email').val(($.urlParam('email')) ? $.urlParam('email') : '');
+            $('#telefono').val(($.urlParam('telefonomovil')) ? $.urlParam('telefonomovil') : '');
+            $('#modalidad').val(($.urlParam('modalidad')) ?  $.urlParam('modalidad') :'');
+      
+          setTimeout(function(){ $('#carrera').val(($.urlParam('carrera')) ? $.urlParam('carrera') : '') }, 3000);
+          
+          $('.page-id-3631 #dni').focusout(function() {
+            var dni = $('#dni').val();
+            var legajo = $('#legajo').val();
+            if (dni != '' && legajo != '') {
+              $.get("https://api.kennedy.edu.ar/api/GetFormWebAlumnoInfo?legajo="+ legajo +"&documento=" +dni, function( data ) {
+                console.log(data);
+                if (data.length == 0) {
+                          alert("Legajo o DNI incorrectos.");
+                        } else {
+                  
+                            $('#nombre').val(data[0].nombre);
+                            $('#apellido').val(data[0].apellido);
+                            $('#email').val(data[0].email);
+                            $('#telefono').val(data[0].telefonomovil);
+                            $('#modalidad').val(data[0].modalidad);
+                            $('#carrera').val(data[0].carrera);
+                        }
+              });
+            }
+            });
+          
+          $('.page-id-3631 #legajo').focusout(function() {
+            var dni = $('#dni').val();
+            var legajo = $('#legajo').val();
+                  
+            if (dni != '' && legajo != '') {
+              $.get("https://api.kennedy.edu.ar/api/GetFormWebAlumnoInfo?legajo="+ legajo +"&documento=" +dni, function( data ) {
+                console.log(data);
+                if (data.length == 0) {
+                          alert("Legajo o DNI incorrectos.");
+                          return;
+                        } else {
+                            $('#nombre').val(data[0].nombre);
+                            $('#apellido').val(data[0].apellido);
+                            $('#email').val(data[0].email);
+                            $('#telefono').val(data[0].telefonomovil);
+                            $('#modalidad').val(data[0].modalidad);
+                            $('#carrera').val(data[0].carrera);
+                        }
+              });
+            }		
+            });
+        });
+      </script>
+      <a class="ws-btn btn-desktop" title="Contactanos por WhatsApp" href="https://www.kennedy.edu.ar/consultas/" style="position: fixed;top: 35%;right: 1px;width: 40px;height: 40px;z-index: 9999;display: none;">	
+        <div class="whatsapp whatsapp-sticky bottom-center" style="background-color: #CC0235;background-color: #CC0235;padding-top: 4px;padding-left: 2px;padding-left: 7px;">
+          <div style="writing-mode: vertical-lr;transform: rotate(180deg);margin-bottom: 10px;margin-left: 2px;color:#fff;margin-top: 10px;">Consultas</div>
+          <svg style="height: 26px;width: 28px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="question-circle" class="svg-inline--fa fa-question-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#fff" d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zM262.655 90c-54.497 0-89.255 22.957-116.549 63.758-3.536 5.286-2.353 12.415 2.715 16.258l34.699 26.31c5.205 3.947 12.621 3.008 16.665-2.122 17.864-22.658 30.113-35.797 57.303-35.797 20.429 0 45.698 13.148 45.698 32.958 0 14.976-12.363 22.667-32.534 33.976C247.128 238.528 216 254.941 216 296v4c0 6.627 5.373 12 12 12h56c6.627 0 12-5.373 12-12v-1.333c0-28.462 83.186-29.647 83.186-106.667 0-58.002-60.165-102-116.531-102zM256 338c-25.365 0-46 20.635-46 46 0 25.364 20.635 46 46 46s46-20.636 46-46c0-25.365-20.635-46-46-46z"></path></svg>
+        </div>
+      </a>
+      
+      </body>
+      </html>
+      <!-- Initialize Swiper -->
+        <script type="text/javascript">
+          var swiper = new Swiper('.swiper-container', {
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+          });
+        </script>
+        
+        <script type="text/javascript">
+          var a = 0;
+      $(window).scroll(function() {
+      
+        var oTop = $('#counters').offset().top - window.innerHeight;
+        if (a == 0 && $(window).scrollTop() > oTop) {
+          $('.counter-value').each(function() {
+            var $this = $(this),
+              countTo = $this.attr('data-count');
+            $({
+              countNum: $this.text()
+            }).animate({
+                countNum: countTo
+              },
+      
+              {
+      
+                duration: 1000,
+                easing: 'swing',
+                step: function() {
+                  $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                  $this.text(this.countNum);
+                  //alert('finished');
+                }
+      
+              });
+          });
+          a = 1;
+        }
+      
+      });
+        </script>
+  
+  <!---------------------------------------------------------------------------------------------------------------->
+ </body>
+</html>
